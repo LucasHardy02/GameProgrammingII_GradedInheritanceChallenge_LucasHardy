@@ -8,13 +8,15 @@ namespace GameProgrammingII_GradedInheritanceChallenge_LucasHardy
 {
     internal class TrueOrFalseQuestion : Question
     {
-        private static string _answerAsString;
 
-        public TrueOrFalseQuestion(string questionText, bool answerAsBool) : base(questionText, _answerAsString)
+        public TrueOrFalseQuestion(string questionText, bool answerAsBool) : base(questionText, answerAsBool.ToString())
         {
-            _answerAsString = answerAsBool.ToString();
-            _questionText = questionText;
-        }
 
+        }
+        public override bool CheckAnswer()
+        {
+            Console.WriteLine("True or False?");
+            return base.CheckAnswer();
+        }
     }
 }

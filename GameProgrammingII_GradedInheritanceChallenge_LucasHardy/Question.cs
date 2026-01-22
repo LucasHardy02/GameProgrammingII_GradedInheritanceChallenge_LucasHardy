@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,7 +16,7 @@ namespace GameProgrammingII_GradedInheritanceChallenge_LucasHardy
         public Question(string question, string answer)
         {
             _questionText = question;
-            _answerText = answer;
+            _answerText = answer.ToLower();
         }
 
         public void Ask()
@@ -24,7 +25,8 @@ namespace GameProgrammingII_GradedInheritanceChallenge_LucasHardy
         }
         public virtual bool CheckAnswer()
         {
-            _playerAnswer = Console.ReadLine();
+            _playerAnswer = Console.ReadLine().ToLower();
+
 
             if(_playerAnswer == _answerText)
             {
@@ -33,6 +35,7 @@ namespace GameProgrammingII_GradedInheritanceChallenge_LucasHardy
                 Console.WriteLine("Press any key to continue");
                 Console.ReadKey(true);
                 Console.Clear();
+                Program._score++;
                 return true;
             }
             else
